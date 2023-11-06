@@ -10,9 +10,8 @@ function App() {
   return (
     <div className="root">
       <Header />
-      <Loader />
-      <Footer />
       <TableContainer />
+      <Footer />
     </div>
   )
 }
