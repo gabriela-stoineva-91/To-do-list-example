@@ -6,7 +6,7 @@ export default function Item() {
             <td>Vacuum floor</td>
             <td>Incomplete</td>
             <td className={styles["todo-action"]}>
-                <button className={styles["btn todo-btn"]}>Change status</button>
+                <button className={styles["btn", "todo-btn"]}>Change status</button>
             </td>
         </tr>
     )

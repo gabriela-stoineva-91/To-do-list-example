@@ -9,7 +9,7 @@ export default function TableContainer() {
                     <h1>Todo List</h1>
 
                     <div className={styles["add-btn-container"]}>
-                        <button className={styles["btn"]}>+ Add new Todo</button>
+                        <button className="btn">+ Add new Todo</button>
                     </div>
 
                     <div className={styles["table-wrapper"]}>

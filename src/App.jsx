@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
-import Loader from './components/Loader';
 import Footer from './components/Footer';
 import TableContainer from './components/TableContainer';
 
