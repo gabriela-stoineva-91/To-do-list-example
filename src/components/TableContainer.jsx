@@ -1,35 +1,40 @@
 import Item from "./Item";
 import Loader from "./Loader";
+import styles from "./TableContainer.module.css"
 
 export default function TableContainer() {
     return (
-        <section className="todo-list-container">
-        <h1>Todo List</h1>
-  
-        <div className="add-btn-container">
-          <button className="btn">+ Add new Todo</button>
-        </div>
-  
-        <div className="table-wrapper">
-  
-          {/* <!-- Loading spinner - show the load spinner when fetching the data from the server--> */}
-            <Loader />
+        <main className={styles["main"]}>
+                <section className={styles["todo-list-container"]}>
+                    <h1>Todo List</h1>
 
-          <table className="table">
-            <thead>
-              <tr>
-                <th className="table-header-task">Task</th>
-                <th className="table-header-status">Status</th>
-                <th className="table-header-action">Action</th>
-              </tr>
-            </thead>
-            <tbody>
+                    <div className={styles["add-btn-container"]}>
+                        <button className={styles["btn"]}>+ Add new Todo</button>
+                    </div>
 
-                <Item />
+                    <div className={styles["table-wrapper"]}>
 
-            </tbody>
-          </table>
-        </div>
-      </section>
+                        {/* <!-- Loading spinner - show the load spinner when fetching the data from the server--> */}
+                        <Loader />
+
+                        <table className={styles["table"]}>
+                            <thead>
+                                <tr>
+                                    <th className={styles["table-header-task"]}>Task</th>
+                                    <th className={styles["table-header-status"]}>Status</th>
+                                    <th className={styles["table-header-action"]}>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <Item />
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+        </main>
+
     )
 }
