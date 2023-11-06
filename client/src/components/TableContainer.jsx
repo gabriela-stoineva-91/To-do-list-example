@@ -3,6 +3,12 @@ import Loader from "./Loader";
 import styles from "./TableContainer.module.css"
 
 export default function TableContainer() {
+    const []
+
+
+    const baseUrl = 'http://localhost:3030/jsonstore';
+
+    
     return (
         <main className={styles["main"]}>
                 <section className={styles["todo-list-container"]}>
