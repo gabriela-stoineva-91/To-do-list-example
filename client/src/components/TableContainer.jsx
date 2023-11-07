@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function TableContainer() {
     const [items, setItems] = useState([]);
+    const [newItem, setNewItem] = useState('');
 
     const baseUrl = 'http://localhost:3030/jsonstore/todos';
 
@@ -22,6 +23,22 @@ export default function TableContainer() {
             .catch(err => console.log(err))
     }, [])
 
+    const addNewItemsHandler = (e) => {
+        e.preventDefault()
+        setNewItem(e.target.value)
+    }
+
+    function submitNewTodoHandler(e) {
+        e.preventDefault();
+        const obj = {
+            'text': newItem,
+        }
+        fetch(baseUrl, { method: 'POST', headers: { 'Content-type': 'application/json' }, body: JSON.stringify(obj) })
+            .then(res => res.json())
+            .then((data) => console.log(data))
+            .catch((err) => console.log(err))
+    }
+
 
 
     return (
@@ -30,11 +47,9 @@ export default function TableContainer() {
                 <h1>Todo List</h1>
 
                 <div className={styles["add-btn-container"]}>
-
-                    <button className="btn">
-                        + Add new Todo</button>
+                    <input type="text" value={newItem} onChange={addNewItemsHandler} />
+                    <button type='submit' className="btn" onClick={submitNewTodoHandler}>+ Add new Todo</button>
                 </div>
-
                 <div className={styles["table-wrapper"]}>
                     <table className={styles["table"]}>
 
@@ -46,9 +61,7 @@ export default function TableContainer() {
                             </tr>
                         </thead>
                         <tbody>
-                            {items.length < 1
-                             ? <Loader /> 
-                             : items.map(item => (
+                            {items.length < 1 ? <Loader /> : items.map((item) => (
                                 <Item
                                     key={item._id}
                                     _id={item._id}
@@ -56,10 +69,12 @@ export default function TableContainer() {
                                     isCompleted={item.isCompleted}
                                     changeStatusHandler={changeStatusHandler}
                                 />
-                            ))}
+                            ))
+                            }
                         </tbody>
                     </table>
                 </div>
+
             </section>
 
         </main>
