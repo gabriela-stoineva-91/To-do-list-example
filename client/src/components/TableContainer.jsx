@@ -42,8 +42,6 @@ export default function TableContainer() {
             .catch((err) => console.log(err))
     }
 
-
-
     return (
         <main className={styles["main"]}>
             <section className={styles["todo-list-container"]}>
