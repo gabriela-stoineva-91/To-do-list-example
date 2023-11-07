@@ -35,7 +35,10 @@ export default function TableContainer() {
         }
         fetch(baseUrl, { method: 'POST', headers: { 'Content-type': 'application/json' }, body: JSON.stringify(obj) })
             .then(res => res.json())
-            .then((data) => console.log(data))
+            .then((data) => {
+                setItems(state => [...state, data])
+                setNewItem('')
+            })
             .catch((err) => console.log(err))
     }
 
