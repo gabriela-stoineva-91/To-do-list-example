@@ -13,16 +13,15 @@ export default function TableContainer() {
     const changeStatusHandler = (itemId) => {
         setItems(state => state.map(item => item._id === itemId ? { ...item, isCompleted: !item.isCompleted } : item));
     }
-
     useEffect(() => {
         fetch(baseUrl)
             .then(res => res.json())
             .then((data) => {
-                console.log(Object.values(data))
                 setItems(Object.values(data))
             })
             .catch(err => console.log(err))
     }, [])
+
 
 
     return (
@@ -31,15 +30,14 @@ export default function TableContainer() {
                 <h1>Todo List</h1>
 
                 <div className={styles["add-btn-container"]}>
-                    <button className="btn">+ Add new Todo</button>
+
+                    <button className="btn">
+                        + Add new Todo</button>
                 </div>
 
                 <div className={styles["table-wrapper"]}>
-
-                    {/* <!-- Loading spinner - show the load spinner when fetching the data from the server--> */}
-                    {/* <Loader /> */}
-
                     <table className={styles["table"]}>
+
                         <thead>
                             <tr>
                                 <th className={styles["table-header-task"]}>Task</th>
@@ -48,18 +46,17 @@ export default function TableContainer() {
                             </tr>
                         </thead>
                         <tbody>
-                            {items.map(item => (
+                            {items.length < 1
+                             ? <Loader /> 
+                             : items.map(item => (
                                 <Item
                                     key={item._id}
                                     _id={item._id}
                                     text={item.text}
                                     isCompleted={item.isCompleted}
                                     changeStatusHandler={changeStatusHandler}
-                                    />
+                                />
                             ))}
-
-
-
                         </tbody>
                     </table>
                 </div>

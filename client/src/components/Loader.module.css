@@ -9,7 +9,9 @@
   align-items: center;
   justify-content: center;
 }
-
+.not-loading-container {
+  display: none;
+}
 .loading-container .loading-spinner {
   position: sticky;
   top: calc(50% - 45px);
